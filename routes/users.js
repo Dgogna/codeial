@@ -7,7 +7,7 @@ const postController=require("../controllers/posts_controller");
 
 router.get("/profile",userController.profile);
 
-router.get("/users/action",postController.post);
+router.get("/users/action",postController.action);
 
 
 module.exports = router;

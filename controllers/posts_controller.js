@@ -1,4 +1,4 @@
 
-module.exports.home=function(req,res){
-    return res.send("<h1>Express is up for the server</h1>");
+module.exports.action=function(req,res){
+    return res.send("<h1>Express is up for post router</h1>");
 }
