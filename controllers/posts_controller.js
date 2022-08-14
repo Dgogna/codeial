@@ -1,4 +1,6 @@
 
 module.exports.action=function(req,res){
-    return res.send("<h1>Express is up for post router</h1>");
+    return res.render("user-profile",{
+        title:"codeial/Profile"
+    })
 }
