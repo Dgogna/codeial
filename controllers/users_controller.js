@@ -8,6 +8,11 @@ module.exports.profile=function(req,res){
 
 // for sign up 
 module.exports.signUp=function(req,res){
+
+    if(req.isAuthenticated()){
+        return res.redirect("/users/profile");
+    }
+
     return res.render("user_sign_up",{
         title:"Sign up"
     })
@@ -15,6 +20,9 @@ module.exports.signUp=function(req,res){
 
 // for sign in
 module.exports.signIn=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect("/users/profile");
+    }
     return res.render("user_sign_in",{
         title:"Sign in"
     })
@@ -55,4 +63,16 @@ module.exports.create=function(req,res){
 module.exports.createSession=function(req,res){
     // todo later
     return res.redirect("/");
+}
+
+module.exports.destroySession=function(req,res){
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/');
+      });
+    // req.logout();
+    // req.session.destroy(function (err) {
+    //     return res.redirect('/');
+    //   });
+    // return res.redirect("/");
 }
