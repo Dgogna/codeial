@@ -1,8 +1,25 @@
-<%- include("_header");-%>
+        <link rel="stylesheet" href="/css/user_profile.css">
+        <!-- <h1>
+            Codeial / Profile Page
+        </h1>
 
-<h1>Users Profile</h1>
-
-<p><%=user.name%></p>
-<p><%=user.email%></p>
-
-<%- include("_footer");-%>
+        <p><%= user.name %></p>
+        <p><%= user.email %></p> -->
+        <div id="main_card">
+            <h1>Profile Page</h1>
+        <div class="card text-right" >
+            <!-- <div class="card-header">
+                <%= user.name %> Profile
+            </div> -->
+            <div class="card-body">
+              <h5 class="card-title"><%= user.name %> Profile</h5>
+              <p class="card-text">Name: <%= user.name %></p>
+              <p class="card-text">Email: <%= user.email %></p>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+            <!-- <div class="card-footer text-muted">
+              2 days ago
+            </div> -->
+          </div>
+        </div>
+        
