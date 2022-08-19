@@ -1,6 +1,5 @@
 body form {
   text-align: center;
-  height: 50%;
   width: 30%;
-  margin-left: 50%;
+  margin: auto;
   padding: 10px; }

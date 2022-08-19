@@ -2,44 +2,120 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 
 
-<div class="card text-center" id="main_card">
+    <h1>Home page</h1>
 
-    <div class="card-body">
-      <h5 class="card-title"><%=title%> Page</h5>
-      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-      <a href="/users/sign-in" class="btn btn-primary">Sign In</a>
-      <a href="/users/sign-up" class="btn btn-primary">Sign Up</a>
-    </div>
-  </div>
+
 
 
 <section id="feed-posts">
     <%if(locals.user){%>
-        <h4>Posts</h4>
-        <form action="/posts/create" id="new-post-form" method="post">
-            <textarea name="content" id="" cols="30" rows="3" placeholder="Creste your post"></textarea>
-            <input type="submit" value="Post">
-        </form>
+        <div class="mb-3 w-50 mx-auto">
+            <h4>Create a Post</h4>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" id="" cols="" rows="3" placeholder="Create your post" required class="form-control"></textarea>
+                <input type="submit" value="Post" class="mb-3 mt-3 form-control w-25 btn btn-primary">
+            </form>
+          </div>
     <%}%>
-    
 
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="content" id="posts-list-container">
+            <%for(var i=0;i<posts.length;i++){%>
+                <div class="col">
+                    <div class="card ">
+                        <div class="card-body">     
+                            <h5><%=posts[i].content%></h5>           
+                            <small>Posted by :- <%=posts[i].user.name%></small>
+                            
+
+                            <div class="post-comments-list mt-4">
+                                <h6>Comments:</h6>
+                                <ul id="post-comments-<%=posts[i]._id%>">
+                                    <%for(comment of posts[i].comments){%>
+                                        <li class="lh-1 mb-2">
+                                            <%=comment.content%>
+                                            <br>
+                                            <span>
+                                                <small>
+                                                    by- <%=comment.user.name%>
+                                                </small>
+                                            </span>
+                                            
+                                        </li>
+                                    <%}%>
+                                </ul>
+                            </div>
+
+                            <!-- Button trigger modal -->
+                            <%if(locals.user){%>
+                                <form action="/comments/create" method="post" class="row g-1">
+                                    <div class="col-auto">
+                                        <input type="text" name="content" placeholder="Add Comment..." required class="form-control">
+                                            <input type="hidden" name="post" value="<%=posts[i]._id%>">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="submit" value="comment" class="btn btn-dark mb-3">
+                                    </div>
+                                    </form>
+                                <!-- <form action="/comments/create" method="post">
+                                    <input type="text" name="content" placeholder="Add Comment..." required>
+                                    <input type="hidden" name="post" value="<%=posts[i]._id%>">
+                                    <input type="submit" value="Add Comment">
+                                </form> -->
+                            <%}%>
+                           
+
+                            <!-- Modal -->
+
+                        </div>
+                    </div>
+                </div>
+
+            <%}%>
+            
+          </div>
+        </div>
+      </div>
+    
+<!-- 
     <div id="posts-list-container">
         <ul>
             <%for(var i=0;i<posts.length;i++){%>
+                
                 <li><%=posts[i].content%></li> 
                 <small><%=posts[i].user.name%></small>
                 <div class="post-comments">
                     <%if(locals.user){%>
                         <form action="/comments/create" method="post">
-                            <input type="text" name="content" placeholder="Add Comment...">
+                            <input type="text" name="content" placeholder="Add Comment..." required>
                             <input type="hidden" name="post" value="<%=posts[i]._id%>">
                             <input type="submit" value="Add Comment">
                         </form>
                     <%}%>
+
+                    <div class="post-comments-list">
+                        <ul id="post-comments-<%=posts[i]._id%>">
+                            <%for(comment of posts[i].comments){%>
+                                <p>
+                                    <%=comment.content%>
+                                    <br>
+                                    <small>
+                                        <%=comment.user.name%>
+                                    </small>
+                                </p>
+                            <%}%>
+                        </ul>
+                    </div>
+
                 </div>
             <%}%>
         </ul>
-    </div>
+    </div> -->
+
+
+
+    
 
 </section>
 
