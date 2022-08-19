@@ -1,18 +1,25 @@
     <!-- <h1><%=title%></h1> -->
-    <link rel="stylesheet" href="/css/user_profile.css">
+<link rel="stylesheet" href="/css/user_profile.css">
 
 
-    <div class="card text-center" id="main_card">
+<div class="card text-center" id="main_card">
 
-        <div class="card-body">
-          <h5 class="card-title">Home Page</h5>
-          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-          <a href="/users/sign-in" class="btn btn-primary">Sign In</a>
-          <a href="/users/sign-up" class="btn btn-primary">Sign Up</a>
-        </div>
-      </div>
+    <div class="card-body">
+      <h5 class="card-title"><%=title%> Page</h5>
+      <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+      <a href="/users/sign-in" class="btn btn-primary">Sign In</a>
+      <a href="/users/sign-up" class="btn btn-primary">Sign Up</a>
+    </div>
+  </div>
 
 
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <form action="" id="new-post-form" method="post">
+        <textarea name="content" id="" cols="30" rows="3" placeholder="Creste your post"></textarea>
+        <input type="submit" value="Post">
+    </form>
+</section>
 
 
 
