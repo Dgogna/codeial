@@ -25,7 +25,16 @@
                 <div class="col">
                     <div class="card ">
                         <div class="card-body">     
-                            <h5><%=posts[i].content%></h5>           
+                            
+                            <h5>
+                                <%if((locals.user) && (locals.user.id==posts[i].user.id)){%>
+                                    <small>
+                                        <a href="/posts/destroy/<%=posts[i]._id%>">del</a>
+                                    </small>
+                                <%}%>
+                                
+                                <%=posts[i].content%>
+                            </h5>           
                             <small>Posted by :- <%=posts[i].user.name%></small>
                             
 
