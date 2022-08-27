@@ -1,20 +1,8 @@
 const Post=require("../models/post");
-module.exports.home=function(req,res){
-    // console.log('Cookies: ', req.cookies);
-    // res.cookie ("user_id",23);
-    // Post.find({},function(err,posts){
-    //     if(err){
-    //         console.log("error in fetching the posts");
-    //         return ;
-    //     }
-    //     // console.log(posts);
-    //     return res.render("home",{
-    //         title:"Codeial | Home",
-    //         posts:posts
-    //     });
-    // })
+const User=require("../models/user");
 
-    // populate the user of each post
+module.exports.home=function(req,res){
+
     Post.find({})
     .populate("user")
     .populate({
@@ -29,10 +17,14 @@ module.exports.home=function(req,res){
             return ;
         }
         // console.log(posts);
-        return res.render("home",{
-            title:"Codeial | Home",
-            posts:posts
-        });
+        User.find({},function(err,users){
+            return res.render("home",{
+                title:"Codeial | Home",
+                posts:posts,
+                all_users:users
+            });
+        })
+        
     })
     
 }

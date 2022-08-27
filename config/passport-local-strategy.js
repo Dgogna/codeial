@@ -3,6 +3,7 @@ const User = require("../models/user");
 
 const LocalStrategy=require("passport-local").Strategy;
 
+// passport uses the local strategy to find the user who is signed in 
 passport.use(new LocalStrategy({
     usernameField:"email"
     },
@@ -16,7 +17,7 @@ passport.use(new LocalStrategy({
             if(!user || user.password!=password){
                 console.log("Invalid username/Password");
                 return done(null,false);
-            }
+            } 
             return done(null,user);
         })
     }
@@ -57,7 +58,7 @@ passport.checkAuthentication=function(req,res,next){
 
 passport.setAuthenticatedUser=function(req,res,next){
     if(req.isAuthenticated()){
-        // req.user contains the current user from the session cookie
+        // req.user contains the current user from the session cookie and we are doing its avaulability for the locals in views
 
         res.locals.user=req.user;
     }
